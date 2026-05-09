@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('HR Portfolio initialized successfully.');
-    
+
     // Navbar Scroll Effect & Progress Bar
     const header = document.getElementById('header');
     const scrollProgress = document.getElementById('scrollProgress');
-    
+
     window.addEventListener('scroll', () => {
         // Background transition
         if (window.scrollY > 20) {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
-        
+
         // Progress bar width calculation
         const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollPercentage = (window.scrollY / scrollTotal) * 100;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         navObserver.observe(section);
     });
-    
+
     // Intersection Observer for Stats Counter
     const stats = document.querySelectorAll('.stat-number');
     let hasCounted = false;
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutSection) {
         observer.observe(aboutSection);
     }
-    
+
     // Scroll-Triggered Animations (reusable system)
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     const animationObserver = new IntersectionObserver((entries) => {
@@ -123,20 +123,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     animateElements.forEach(el => animationObserver.observe(el));
-    
+
     // Smooth Scroll with Navbar Offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
                 const headerOffset = 64; // Navbar height
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     // Page Transition
     const pageTransition = document.getElementById('page-transition');
     if (pageTransition) {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pageTransition.classList.add('loaded');
         }, 100);
     }
-    
+
     // Custom Cursor
     const cursor = document.getElementById('custom-cursor');
     if (cursor) {
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
-        
+
         const clickables = document.querySelectorAll('a, button, input, textarea, .contact-card, .skill-card, .edu-card, .timeline-card');
         clickables.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
@@ -173,9 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             let isValid = true;
-            
+
             // Full Name validation
             const nameInput = document.getElementById('fullName');
             if (!nameInput.value.trim()) {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 nameInput.parentElement.classList.remove('has-error');
             }
-            
+
             // Email validation
             const emailInput = document.getElementById('email');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 emailInput.parentElement.classList.remove('has-error');
             }
-            
+
             // Subject validation
             const subjectInput = document.getElementById('subject');
             if (!subjectInput.value.trim()) {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 subjectInput.parentElement.classList.remove('has-error');
             }
-            
+
             // Message validation
             const messageInput = document.getElementById('message');
             if (!messageInput.value.trim()) {
@@ -212,36 +212,37 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 messageInput.parentElement.classList.remove('has-error');
             }
-            
+
             if (isValid) {
                 const submitBtn = contactForm.querySelector('.btn-submit');
                 const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = 'Sending...';
+                submitBtn.innerHTML = 'Redirecting...';
                 submitBtn.disabled = true;
 
                 try {
-                    // Send data using Web3Forms
-                    const formData = new FormData(contactForm);
-                    const response = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        body: formData
-                    });
+                    const fullName = document.getElementById('fullName').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value.trim();
+                    const message = document.getElementById('message').value.trim();
+
+                    // Format message for WhatsApp
+                    const waNumber = '918121650111'; // Country code (91) + phone number
+                    const waMessage = `Hello Lohith!\n\nMy name is ${fullName} (${email}).\n\n*Subject:* ${subject}\n*Message:* ${message}`;
+                    const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
                     
-                    const data = await response.json();
+                    // Open WhatsApp
+                    window.open(whatsappUrl, '_blank');
+
+                    // Show success message
+                    const successMsg = document.getElementById('formSuccess');
+                    successMsg.style.display = 'block';
+                    successMsg.style.color = ''; // Use default CSS color
+                    successMsg.innerHTML = '✅ Redirecting to WhatsApp...';
                     
-                    if (data.success) {
-                        // Show success message
-                        const successMsg = document.getElementById('formSuccess');
-                        successMsg.style.display = 'block';
-                        successMsg.style.color = ''; // Use default CSS color
-                        successMsg.innerHTML = '✅ Message sent! I\'ll get back to you soon.';
-                        // Reset form
-                        contactForm.reset();
-                    } else {
-                        throw new Error(data.message || 'Submission failed');
-                    }
+                    // Reset form
+                    contactForm.reset();
                 } catch (error) {
-                    console.error('Error sending message:', error);
+                    console.error('Error redirecting:', error);
                     // Show error message
                     const successMsg = document.getElementById('formSuccess');
                     successMsg.style.display = 'block';
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Restore button state
                     submitBtn.innerHTML = originalBtnText;
                     submitBtn.disabled = false;
-                    
+
                     // Hide message after 5 seconds
                     setTimeout(() => {
                         document.getElementById('formSuccess').style.display = 'none';
@@ -259,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         // Remove error on input
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
