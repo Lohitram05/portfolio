@@ -168,12 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contact Form Validation
+    // Contact Form Validation & Submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // Prevent default form submission
+        contactForm.addEventListener('submit', (e) => e.preventDefault());
 
+        function validateForm() {
             let isValid = true;
 
             // Full Name validation
@@ -213,53 +214,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageInput.parentElement.classList.remove('has-error');
             }
 
-            if (isValid) {
-                const submitBtn = contactForm.querySelector('.btn-submit');
-                const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = 'Redirecting...';
-                submitBtn.disabled = true;
+            return isValid;
+        }
 
-                try {
-                    const fullName = document.getElementById('fullName').value.trim();
-                    const email = document.getElementById('email').value.trim();
-                    const subject = document.getElementById('subject').value.trim();
-                    const message = document.getElementById('message').value.trim();
+        function handleSubmission(method) {
+            if (!validateForm()) return;
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const phoneNumber = '918121650111'; // Country code (91) + phone number
 
-                    // Format message for WhatsApp
-                    const waNumber = '918121650111'; // Country code (91) + phone number
-                    const waMessage = `Hello Lohith!\n\nMy name is ${fullName} (${email}).\n\n*Subject:* ${subject}\n*Message:* ${message}`;
-                    const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
-                    
-                    // Open WhatsApp
-                    window.open(whatsappUrl, '_blank');
-
-                    // Show success message
-                    const successMsg = document.getElementById('formSuccess');
-                    successMsg.style.display = 'block';
-                    successMsg.style.color = ''; // Use default CSS color
-                    successMsg.innerHTML = '✅ Redirecting to WhatsApp...';
-                    
-                    // Reset form
-                    contactForm.reset();
-                } catch (error) {
-                    console.error('Error redirecting:', error);
-                    // Show error message
-                    const successMsg = document.getElementById('formSuccess');
-                    successMsg.style.display = 'block';
-                    successMsg.style.color = '#ef4444'; // Red error color
-                    successMsg.innerHTML = '❌ Something went wrong. Please try again.';
-                } finally {
-                    // Restore button state
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-
-                    // Hide message after 5 seconds
-                    setTimeout(() => {
-                        document.getElementById('formSuccess').style.display = 'none';
-                    }, 5000);
-                }
+            const successMsg = document.getElementById('formSuccess');
+            successMsg.style.display = 'block';
+            successMsg.style.color = ''; 
+            
+            let url = '';
+            
+            if (method === 'whatsapp') {
+                const waMessage = `Hello Lohith!\n\nMy name is ${fullName} (${email}).\n\n*Subject:* ${subject}\n*Message:* ${message}`;
+                url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waMessage)}`;
+                successMsg.innerHTML = '✅ Redirecting to WhatsApp...';
+                window.open(url, '_blank');
+            } else if (method === 'email') {
+                const emailBody = `Hi Lohith,\n\n${message}\n\nFrom: ${fullName}\nEmail: ${email}`;
+                url = `mailto:lohithram8121@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                successMsg.innerHTML = '✅ Opening Email Client...';
+                window.location.href = url;
+            } else if (method === 'sms') {
+                const smsBody = `Hi Lohith! I'm ${fullName}. Subject: ${subject}. Message: ${message}. My email: ${email}`;
+                // Detect iOS vs Android formatting for SMS body, but standard is ?body=
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                const separator = isIOS ? '&' : '?';
+                url = `sms:+${phoneNumber}${separator}body=${encodeURIComponent(smsBody)}`;
+                successMsg.innerHTML = '✅ Opening SMS App...';
+                window.location.href = url;
             }
-        });
+
+            // Reset form
+            contactForm.reset();
+            
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        }
+
+        // Attach listeners to buttons
+        const btnEmail = document.getElementById('btn-email');
+        const btnWhatsapp = document.getElementById('btn-whatsapp');
+        const btnSms = document.getElementById('btn-sms');
+
+        if(btnEmail) btnEmail.addEventListener('click', () => handleSubmission('email'));
+        if(btnWhatsapp) btnWhatsapp.addEventListener('click', () => handleSubmission('whatsapp'));
+        if(btnSms) btnSms.addEventListener('click', () => handleSubmission('sms'));
 
         // Remove error on input
         const inputs = contactForm.querySelectorAll('input, textarea');
