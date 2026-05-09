@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio - HR Professional">
+    <title>HR Professional Portfolio</title>
+    
+    <!-- Google Fonts: Inter and Poppins for a clean, professional corporate look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
+</head>
+<body>
+    <!-- Page Transition Overlay -->
+    <div id="page-transition" class="page-transition"></div>
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#hero" class="logo">Lohith Ram<span class="logo-dot">.</span></a>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-links">
+                        <li><a href="#hero" class="nav-link">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#experience" class="nav-link">Experience</a></li>
+                        <li><a href="#education" class="nav-link">Education</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Resume
+                    </a>
+                </div>
+                
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </nav>
+        </div>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Design System Preview -->
+        <section id="preview" class="section" style="background-color: var(--clr-background);">
+            <div class="container">
+                <div style="margin-bottom: var(--space-xl);">
+                    <h2 style="font-family: var(--font-heading); font-size: var(--fs-3xl); font-weight: var(--fw-bold); color: var(--clr-text-primary); margin-bottom: var(--space-xs);">Design System Preview</h2>
+                    <p style="font-family: var(--font-body); font-size: var(--fs-base); font-weight: var(--fw-regular); color: var(--clr-text-secondary); line-height: var(--line-height-body);">
+                        This is a preview paragraph. The quick brown fox jumps over the lazy dog. It demonstrates the body font and the secondary text color.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: var(--space-xl);">
+                    <button style="background-color: var(--clr-primary); color: var(--clr-surface); font-family: var(--font-body); font-size: var(--fs-base); font-weight: var(--fw-medium); padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-md); border: none; cursor: pointer; transition: var(--transition-default); box-shadow: var(--shadow-card);" onmouseover="this.style.backgroundColor='var(--clr-accent)'; this.style.boxShadow='var(--shadow-hover)';" onmouseout="this.style.backgroundColor='var(--clr-primary)'; this.style.boxShadow='var(--shadow-card)';">Primary Button</button>
+                </div>
+
+                <div style="background-color: var(--clr-surface); padding: var(--space-lg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); border: 1px solid var(--clr-border); max-width: 400px; transition: var(--transition-default);" onmouseover="this.style.boxShadow='var(--shadow-hover)';" onmouseout="this.style.boxShadow='var(--shadow-card)';">
+                    <h3 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: var(--fw-semibold); color: var(--clr-primary); margin-bottom: var(--space-sm);">Preview Card</h3>
+                    <p style="font-family: var(--font-body); font-size: var(--fs-sm); color: var(--clr-text-secondary); margin-bottom: var(--space-md);">Cards use the surface color and have subtle borders and shadows to separate them from the background.</p>
+                    <span style="display: inline-block; background-color: var(--clr-accent); color: var(--clr-surface); padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: var(--fw-bold);">Badge</span>
+                </div>
+            </div>
+        </section>
+        <!-- Hero / intro section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">👋 Available for HR Roles</span>
+                    <h1 class="hero-title">Hi, I'm <span>Lohith Ram</span></h1>
+                    <h2 class="hero-subtitle">HR Intern &middot; Recruitment &middot; Operations</h2>
+                    <p class="hero-description">Passionate about people, operations, and building great teams.</p>
+                    <div class="hero-location-lang">
+                        <span>📍 Rajahmundry, Andhra Pradesh</span>
+                        <span>🗣️ English, Telugu</span>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#" class="btn btn-primary">Download Resume</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://www.linkedin.com/in/rongalalohithram/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="mailto:lohithram8121@gmail.com" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-avatar">LR</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="about-section section" style="background-color: var(--clr-surface);">
+            <div class="container about-container">
+                <div class="about-stats-wrapper">
+                    <div class="stats-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div><h3 class="stat-number" data-target="1">0</h3><span>+</span></div>
+                                <p class="stat-label">Months of HR Experience</p>
+                            </div>
+                            <div class="stat-item">
+                                <div><h3 class="stat-number" data-target="5">0</h3><span>+</span></div>
+                                <p class="stat-label">HR Skills Mastered</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 class="stat-number" data-target="2">0</h3>
+                                <p class="stat-label">Languages Spoken</p>
+                            </div>
+                        </div>
+                        
+                        <div class="fun-facts">
+                            <h4>Fun Facts</h4>
+                            <ul>
+                                <li>🏸 Loves playing Badminton</li>
+                                <li>🎬 Enjoys Video Editing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content animate-on-scroll" data-animation="fadeInRight" data-delay="0">
+                    <span class="section-label">GET TO KNOW ME</span>
+                    <div class="section-divider"></div>
+                    <h2 class="section-title">About Me</h2>
+                    
+                    <div class="about-text">
+                        <p>I am a Computer Science (AI & Data Science) graduate from KIET, Kakinada, who discovered a strong passion for people and organizations. This realization led me to transition into the Human Resources field, where I can leverage my analytical background to build and support great teams.</p>
+                        
+                        <p>Currently, I work as an HR Intern at EDXCELLENCE, where I am actively involved in training coordination, recruitment processes, and feedback management. I enjoy the dynamic nature of HR and the direct impact it has on employee success and company culture.</p>
+                        
+                        <p>My goal is to continue growing as an HR professional, with a specific focus on talent acquisition, operations, and people management. I am driven by the desire to connect the right talent with the right opportunities and foster a positive workplace.</p>
+                    </div>
+                    
+                    <div class="about-pills">
+                        <span class="pill">📍 Rajahmundry, AP</span>
+                        <span class="pill">🎓 B.Tech CSE 2025</span>
+                        <span class="pill">💼 Open to Opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="skills-section section bg-light">
+            <div class="container skills-container">
+                <div class="section-header text-center">
+                    <span class="section-label">WHAT I BRING</span>
+                    <div class="section-divider center-divider"></div>
+                    <h2 class="section-title">My Skills</h2>
+                    <p class="section-intro">A combination of HR expertise and people-first soft skills.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Card 1 -->
+                    <div class="skill-card animate-on-scroll" data-animation="fadeInUp" data-delay="0">
+                        <div class="skill-card-header">
+                            <span class="skill-icon">🎯</span>
+                            <h3 class="skill-title">HR & Recruitment</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Recruitment & Talent Acquisition</span>
+                            <span class="skill-pill">Resume Screening & Shortlisting</span>
+                            <span class="skill-pill">Interview Coordination</span>
+                            <span class="skill-pill">Operations Management</span>
+                            <span class="skill-pill">Session Monitoring & Scheduling</span>
+                            <span class="skill-pill">Attendance Management</span>
+                            <span class="skill-pill">Student Relationship Management</span>
+                            <span class="skill-pill">HR Operations Support</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="skill-card animate-on-scroll" data-animation="fadeInUp" data-delay="100">
+                        <div class="skill-card-header">
+                            <span class="skill-icon">🤝</span>
+                            <h3 class="skill-title">Soft Skills</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Communication</span>
+                            <span class="skill-pill">Adaptability</span>
+                            <span class="skill-pill">Problem-solving</span>
+                            <span class="skill-pill">Team Collaboration</span>
+                            <span class="skill-pill">Active Listening</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="skill-card animate-on-scroll" data-animation="fadeInUp" data-delay="200">
+                        <div class="skill-card-header">
+                            <span class="skill-icon">🛠️</span>
+                            <h3 class="skill-title">Languages & Tools</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">English (Fluent & Professional)</span>
+                            <span class="skill-pill">Telugu (Fluent)</span>
+                            <span class="skill-pill">MS Office (Word, Excel, PowerPoint)</span>
+                            <span class="skill-pill">Google Workspace</span>
+                            <span class="skill-pill">Scheduling & Calendar Tools</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Strip -->
+                <div class="skills-banner animate-on-scroll" data-animation="fadeInUp" data-delay="300">
+                    <p>Always learning &middot; Always growing &middot; Open to new HR opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="experience" class="experience-section section" style="background-color: var(--clr-surface);">
+            <div class="container experience-container">
+                <div class="section-header text-center">
+                    <span class="section-label">MY JOURNEY</span>
+                    <div class="section-divider center-divider"></div>
+                    <h2 class="section-title">Work Experience</h2>
+                    <p class="section-intro">Hands-on HR experience in a fast-paced ed-tech environment.</p>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <!-- Timeline vertical line -->
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Timeline start label -->
+                    <div class="timeline-label start-label">Start</div>
+
+                    <!-- Experience Item 1 -->
+                    <div class="timeline-item animate-on-scroll" data-animation="fadeInRight" data-delay="0">
+                        <!-- Timeline dot -->
+                        <div class="timeline-dot"></div>
+                        
+                        <!-- Timeline Card -->
+                        <div class="timeline-card">
+                            <div class="timeline-card-header">
+                                <div class="timeline-company-role">
+                                    <h3 class="company-name">EDXCELLENCE</h3>
+                                    <h4 class="role-title">HR Intern</h4>
+                                </div>
+                                <div class="timeline-status">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Currently Working</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-badges">
+                                <span class="timeline-badge">📅 Feb 2026 – Present</span>
+                                <span class="timeline-badge">🏢 Ed-Tech &middot; Rajahmundry</span>
+                            </div>
+                            
+                            <div class="timeline-card-divider"></div>
+                            
+                            <ul class="responsibilities-list">
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <p>Monitored and coordinated training sessions to ensure smooth execution and effective participant engagement</p>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <p>Managed student feedback processes and maintained communication to improve overall learning experience and operational efficiency</p>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <p>Scheduled interviews, training sessions, and meetings while ensuring timely coordination between candidates, students, and team members</p>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <p>Performed resume shortlisting and assisted in recruiting potential candidates/students based on organizational requirements</p>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <p>Supported smooth operations and team coordination in the ed-tech environment</p>
+                                </li>
+                            </ul>
+                            
+                            <div class="key-impact-strip">
+                                <div class="impact-box">
+                                    <span class="impact-icon">📊</span>
+                                    <span class="impact-label">Training Sessions Monitored</span>
+                                </div>
+                                <div class="impact-box">
+                                    <span class="impact-icon">👥</span>
+                                    <span class="impact-label">Recruitment Rounds Assisted</span>
+                                </div>
+                                <div class="impact-box">
+                                    <span class="impact-icon">📝</span>
+                                    <span class="impact-label">Student Feedback Managed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline ongoing label -->
+                    <div class="timeline-label end-label">Ongoing</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="education-section section bg-light">
+            <div class="container education-container">
+                <div class="section-header text-center">
+                    <span class="section-label">MY ACADEMICS</span>
+                    <div class="section-divider center-divider"></div>
+                    <h2 class="section-title">Education</h2>
+                    <p class="section-intro">A strong academic foundation in technology and science.</p>
+                </div>
+
+                <div class="education-grid">
+                    <!-- B.Tech Card -->
+                    <div class="edu-card featured-edu animate-on-scroll" data-animation="fadeInUp" data-delay="0">
+                        <div class="edu-badge">Highest Qualification</div>
+                        <div class="edu-icon">🎓</div>
+                        <h3 class="edu-degree">B.Tech</h3>
+                        <p class="edu-spec">Computer Science &amp; Engineering (AI &amp; Data Science)</p>
+                        <h4 class="edu-inst">Kakinada Institute of Engineering and Technology (KIET)</h4>
+                        <div class="edu-meta">
+                            <span class="edu-duration">2021 &ndash; 2025</span>
+                            <span class="edu-board">JNTU Kakinada</span>
+                        </div>
+                        <div class="edu-cgpa-box">
+                            <div class="cgpa-header">
+                                <span class="cgpa-label">CGPA</span>
+                                <span class="cgpa-score">6.08</span>
+                            </div>
+                            <div class="cgpa-bar-track">
+                                <!-- 6.08 / 10 = 60.8% -->
+                                <div class="cgpa-bar-fill" data-width="60.8%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 12 Card -->
+                    <div class="edu-card animate-on-scroll" data-animation="fadeInUp" data-delay="150">
+                        <div class="edu-icon">📚</div>
+                        <h3 class="edu-degree">Class 12</h3>
+                        <p class="edu-spec">Board of Intermediate Education</p>
+                        <h4 class="edu-inst">Sri Sai Bharathi Junior College</h4>
+                        <div class="edu-meta">
+                            <span class="edu-duration">2019 &ndash; 2021</span>
+                            <span class="edu-board">BIE Andhra Pradesh</span>
+                        </div>
+                        <div class="edu-cgpa-box">
+                            <div class="cgpa-header">
+                                <span class="cgpa-label">CGPA</span>
+                                <span class="cgpa-score">6.06</span>
+                            </div>
+                            <div class="cgpa-bar-track">
+                                <!-- 6.06 / 10 = 60.6% -->
+                                <div class="cgpa-bar-fill" data-width="60.6%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 10 Card -->
+                    <div class="edu-card animate-on-scroll" data-animation="fadeInUp" data-delay="300">
+                        <div class="edu-icon">🏫</div>
+                        <h3 class="edu-degree">Class 10</h3>
+                        <p class="edu-spec">Secondary School Education</p>
+                        <h4 class="edu-inst">Little Paradise High School</h4>
+                        <div class="edu-meta">
+                            <span class="edu-duration">Passed 2019</span>
+                            <span class="edu-board">BSE Andhra Pradesh</span>
+                        </div>
+                        <div class="edu-cgpa-box">
+                            <div class="cgpa-header">
+                                <span class="cgpa-label">CGPA</span>
+                                <span class="cgpa-score">9.02</span>
+                            </div>
+                            <div class="cgpa-bar-track">
+                                <!-- 9.02 / 10 = 90.2% -->
+                                <div class="cgpa-bar-fill" data-width="90.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edu-bottom-strip animate-on-scroll" data-animation="fadeInUp" data-delay="450">
+                    <p>📚 Currently expanding skills in HR practices, people management, and organizational behavior.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact-section section" style="background-color: var(--clr-surface);">
+            <div class="container contact-container">
+                <div class="section-header text-center">
+                    <span class="section-label">GET IN TOUCH</span>
+                    <div class="section-divider center-divider"></div>
+                    <h2 class="section-title">Contact Me</h2>
+                    <p class="section-intro">I'm open to HR roles, internships, and collaborations. Let's connect!</p>
+                </div>
+
+                <div class="contact-content">
+                    <!-- Left: Contact Info -->
+                    <div class="contact-info-wrapper">
+                        <div class="contact-cards">
+                            <a href="mailto:lohithram8121@gmail.com" class="contact-card animate-on-scroll" data-animation="fadeInLeft" data-delay="0">
+                                <span class="contact-icon">✉️</span>
+                                <div class="contact-card-text">
+                                    <span class="contact-card-label">Email Address</span>
+                                    <span class="contact-card-value">lohithram8121@gmail.com</span>
+                                </div>
+                            </a>
+                            
+                            <a href="tel:+918121650111" class="contact-card animate-on-scroll" data-animation="fadeInLeft" data-delay="100">
+                                <span class="contact-icon">📞</span>
+                                <div class="contact-card-text">
+                                    <span class="contact-card-label">Phone Number</span>
+                                    <span class="contact-card-value">+91 8121650111</span>
+                                </div>
+                            </a>
+                            
+                            <a href="https://maps.google.com/?q=Rajahmundry,+Andhra+Pradesh,+India" target="_blank" rel="noopener noreferrer" class="contact-card animate-on-scroll" data-animation="fadeInLeft" data-delay="200">
+                                <span class="contact-icon">📍</span>
+                                <div class="contact-card-text">
+                                    <span class="contact-card-label">Location</span>
+                                    <span class="contact-card-value">Rajahmundry, Andhra Pradesh</span>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <a href="https://www.linkedin.com/in/rongalalohithram/" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin animate-on-scroll" data-animation="fadeInLeft" data-delay="300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            Connect on LinkedIn
+                        </a>
+                        
+                        <div class="availability-badge animate-on-scroll" data-animation="fadeInLeft" data-delay="400">
+                            <span class="status-dot"></span>
+                            <span>Available for opportunities</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Contact Form -->
+                    <div class="contact-form-wrapper animate-on-scroll" data-animation="fadeInRight" data-delay="0">
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="John Doe">
+                                <span class="error-msg" id="nameError">Please enter your full name.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com">
+                                <span class="error-msg" id="emailError">Please enter a valid email address.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Opportunity / Collaboration">
+                                <span class="error-msg" id="subjectError">Please enter a subject.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Hello Lohith..."></textarea>
+                                <span class="error-msg" id="messageError">Please enter your message.</span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-submit">Send Message &rarr;</button>
+                            
+                            <div id="formSuccess" class="form-success">
+                                ✅ Message sent! I'll get back to you soon.
+                            </div>
+                        </form>
+                        <p class="form-note">I typically respond within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <h3 class="footer-name">Lohith Ram &middot; <span class="footer-tagline">HR Professional</span></h3>
+            
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <p class="footer-copyright">&copy; 2026 Rongala Veera Venkata Lohith Ram. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
