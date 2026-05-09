@@ -239,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.open(url, '_blank');
             } else if (method === 'email') {
                 const emailBody = `Hi Lohith,\n\n${message}\n\nFrom: ${fullName}\nEmail: ${email}`;
-                url = `mailto:lohithram8121@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-                successMsg.innerHTML = '✅ Opening Email Client...';
-                window.location.href = url;
+                url = `https://mail.google.com/mail/?view=cm&fs=1&to=lohithram8121@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                successMsg.innerHTML = '✅ Opening Gmail...';
+                window.open(url, '_blank');
             } else if (method === 'sms') {
                 const smsBody = `Hi Lohith! I'm ${fullName}. Subject: ${subject}. Message: ${message}. My email: ${email}`;
                 // Detect iOS vs Android formatting for SMS body, but standard is ?body=
