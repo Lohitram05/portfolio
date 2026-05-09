@@ -487,8 +487,7 @@
                     <!-- Right: Contact Form -->
                     <div class="contact-form-wrapper animate-on-scroll" data-animation="fadeInRight" data-delay="0">
                         <form id="contactForm" class="contact-form" novalidate>
-                            <!-- TODO: Replace YOUR_WEB3FORMS_ACCESS_KEY_HERE with your actual Web3Forms access key -->
-                            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+                            <!-- Form data will be sent via direct links -->
 
                             <div class="form-group">
                                 <label for="fullName">Full Name</label>
@@ -515,7 +514,11 @@
                                 <span class="error-msg" id="messageError">Please enter your message.</span>
                             </div>
 
-                            <button type="submit" class="btn btn-submit">Send Message &rarr;</button>
+                            <div class="form-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <button type="button" id="btn-email" class="btn btn-submit" style="flex: 1; padding: 12px; font-size: 0.9rem;">📧 Email</button>
+                                <button type="button" id="btn-whatsapp" class="btn btn-submit" style="flex: 1; background-color: #25D366; color: white; border-color: #25D366; padding: 12px; font-size: 0.9rem;">💬 WhatsApp</button>
+                                <button type="button" id="btn-sms" class="btn btn-submit" style="flex: 1; background-color: #34B7F1; color: white; border-color: #34B7F1; padding: 12px; font-size: 0.9rem;">📱 SMS</button>
+                            </div>
 
                             <div id="formSuccess" class="form-success">
                                 ✅ Message sent! I'll get back to you soon.
