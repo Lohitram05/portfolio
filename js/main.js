@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact Form Validation
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             let isValid = true;
@@ -214,14 +214,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (isValid) {
-                // Show success message
-                document.getElementById('formSuccess').style.display = 'block';
-                // Reset form
-                contactForm.reset();
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('formSuccess').style.display = 'none';
-                }, 5000);
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Send data using Web3Forms
+                    const formData = new FormData(contactForm);
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Show success message
+                        const successMsg = document.getElementById('formSuccess');
+                        successMsg.style.display = 'block';
+                        successMsg.style.color = ''; // Use default CSS color
+                        successMsg.innerHTML = '✅ Message sent! I\'ll get back to you soon.';
+                        // Reset form
+                        contactForm.reset();
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    // Show error message
+                    const successMsg = document.getElementById('formSuccess');
+                    successMsg.style.display = 'block';
+                    successMsg.style.color = '#ef4444'; // Red error color
+                    successMsg.innerHTML = '❌ Something went wrong. Please try again.';
+                } finally {
+                    // Restore button state
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('formSuccess').style.display = 'none';
+                    }, 5000);
+                }
             }
         });
         
